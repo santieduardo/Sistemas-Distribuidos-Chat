@@ -27,7 +27,7 @@ public class ChatServer {
 		public void run() {
 			String textoRecebido;
 			while ((textoRecebido = leitor.nextLine()) != null) {
-				System.out.println("Recebeu:" + textoRecebido);
+				System.out.println(textoRecebido);
 				
 			}
 		}

@@ -21,6 +21,8 @@ public class ChatClient extends JFrame{
 	Socket socket;
 	PrintWriter escritor;
 	
+	String nome;
+	
 	private void initElementos(){
 		textoParaEnviar = new JTextField();
 		botaoEnviar = new JButton("Enviar");
@@ -28,7 +30,7 @@ public class ChatClient extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				escritor.println(textoParaEnviar.getText());
+				escritor.println(nome + ": " + textoParaEnviar.getText());
 				escritor.flush();
 				textoParaEnviar.setText("");
 				textoParaEnviar.requestFocus();
@@ -52,17 +54,19 @@ public class ChatClient extends JFrame{
 		}
 	}
 	
-	public ChatClient(){
-		super("Chat");
+	public ChatClient(String nome){
+		super("Chat: " + nome);
+		this.nome = nome;
 		
 		initElementos();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(500, 500);
+		setSize(500, 80);
 		setVisible(true);
 	}
 
 	public static void main(String[] args) {
-		new ChatClient();
+		new ChatClient("Santi");
+		new ChatClient("Schwab");
 	}
 
 }
